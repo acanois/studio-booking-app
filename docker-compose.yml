@@ -17,6 +17,10 @@ services:
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
+    environment:
+      - POSTGRES_DB=$PG_DB_NAME
+      - POSTGRES_USER=$PG_DB_USER
+      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
     ports:
       - "8000:8000"
     depends_on:
