@@ -8,19 +8,17 @@
     <title>Document</title>
 </head>
 <body>
-    <p>Booking template</p>
     <div id="vue-app">
         [[ message ]]
     </div>
     <script>
-        var app = new Vue({
-            delimiters: ["[[", "]]"],
-            el: '#vue-app',
-            data: {
-              message: 'Hello Vue!'
-            }
-          });
+      var app = new Vue({
+        delimiters: ["[[", "]]"],
+        el: '#vue-app',
+        data: {
+          message: 'Hello Vue!'
+        }
+      });
     </script>
-    
 </body>
 </html>
