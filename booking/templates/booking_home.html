@@ -1,9 +1,16 @@
 {% extends "base_template.html" %}
 
 {% block content %}
-    <h1>Booking Home Page</h1>
-    <ul>
-        <li>Num users: {{ num_users }}</li>
-        <li>Num bookings: {{ num_bookings }}</li>
-    </ul>
+  <h1>Current Users</h1>
+  {% if user_list %}
+  <ul>
+    {% for user in user_list %}
+      <li>
+        <a href="{{ user.get_absolute_url }}">{{ user.first_name }}</a> ({{user.last_name}})
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no users in the databse.</p>
+  {% endif %} 
 {% endblock %}

@@ -1,41 +1,33 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .forms import InputUserForm
+from django.views import generic
 
 from .models import User, StudioBooking
 
 def index(request):
-    num_users = User.objects.all().count()
-    num_bookings = StudioBooking.objects.all().count()
-
-    context = {
-        'num_users': num_users,
-        'num_bookings': num_bookings
-    }
-
+    context = {'user_list': User.objects.all()}
     return render(request, 'booking_home.html', context=context)
 
-# def get_all(req):
-#     return render(req, 'all_data.html')
 
-def new_user(req):
-    # new_user = User()
+def get_all(request):
+    user_list = User.objects.all()
+    return render(request, 'booking_home.html', user_list=user_list)
 
-    # new_user.first_name = 'Fenriz'
-    # new_user.last_name = 'Fenriz'
-    # new_user.band_name = 'Darkthrone'
-    # new_user.save()
+def create_user(request):
+    pass
 
-    # print(new_user)
+def get_user(request):
+    pass
 
-    return render(req, 'createduser.html')
-    # if req.method == 'POST':
-    #     form = InputUserForm(req.POST)
+def update_user(request):
+    pass
 
-        # if form.is_valid():
-        #     return HttpResponse(req.body)
+def delete_user(request):
+    pass
 
-
-def get_all(req):
-    print(User.objects.all())
-    return HttpResponse(User.objects.all())
+class UserListView(generic.ListView):
+    model = User
+    user_context_name = 'user_list'
+    queryset = User.objects.filter(first_name__icontains='Fen')
+    template_name = 'booking_home.html'
