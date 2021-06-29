@@ -1,7 +1,8 @@
 from django.contrib import admin
+from django.contrib.auth.models import User
+
 
 # Register your models here.
-from .models import User, StudioBooking
+from .models import StudioBooking
 
-admin.site.register(User)
 admin.site.register(StudioBooking)
