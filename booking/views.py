@@ -5,8 +5,12 @@ from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
+from django.views.decorators.cache import never_cache
+from django.views.generic import TemplateView
 
 from .models import StudioBooking
+
+vue_view = never_cache(TemplateView.as_view(template_name='index.html'))
 
 def index(request):
     return render(request, 'booking_home.html')
