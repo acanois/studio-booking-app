@@ -12,10 +12,5 @@ export default new Router({
       name: 'home',
       component: VueDemo
     },
-    {
-      path: '/messages',
-      name: 'messages',
-      component: Messages
-    }
   ]
 })
