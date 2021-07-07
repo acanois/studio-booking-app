@@ -3,6 +3,7 @@ version: "3.9"
 services:
   db:
     image: postgres
+    container_name: docker-django-vue-db
     volumes:
       - .:/data/db
         #/var/lib/postgresql/data
@@ -14,6 +15,7 @@ services:
       - ./.env
   web:
     build: .
+    container_name: docker-django-vue-backend 
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
@@ -27,7 +29,10 @@ services:
       - db
   frontend:
     build: .
+    container_name: docker-django-vue-frontend
     command: yarn serve
+    volumes:
+      - .:/code
     ports: 
       - "8080:8080"
     depends_on: 

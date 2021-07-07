@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
-    
+    <p>VUE DEMO?</p>
+  </div>
 </template>
 
 <script>

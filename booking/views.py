@@ -10,17 +10,17 @@ from django.views.generic import TemplateView
 
 from .models import StudioBooking
 
-vue_view = never_cache(TemplateView.as_view(template_name='index.html'))
+booking_home = never_cache(TemplateView.as_view(template_name='index.html'))
 
-def index(request):
-    return render(request, 'booking_home.html')
+# def index(request):
+#     return render(request, 'booking_home.html')
 
-class UserListView(LoginRequiredMixin, generic.ListView):
-    model = User
-    user_context_name = 'user_list'
-    queryset = User.objects.all()
-    template_name = 'booking_home.html'
+# class UserListView(LoginRequiredMixin, generic.ListView):
+#     model = User
+#     user_context_name = 'user_list'
+#     queryset = User.objects.all()
+#     template_name = 'booking_home.html'
 
-class UserDetailView(LoginRequiredMixin, generic.DetailView):
-    model = User
-    template_name = 'user_detail.html'
+# class UserDetailView(LoginRequiredMixin, generic.DetailView):
+#     model = User
+#     template_name = 'user_detail.html'

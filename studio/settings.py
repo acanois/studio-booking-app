@@ -38,6 +38,7 @@ ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(' ')
 INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'booking.apps.BookingConfig',
+    'clear_cache',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -63,9 +64,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
+            os.path.join(BASE_DIR, 'dist'),
             os.path.join(BASE_DIR, 'templates'),
             os.path.join(BASE_DIR, 'booking', 'templates'),
-            os.path.join(BASE_DIR, 'dist'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
