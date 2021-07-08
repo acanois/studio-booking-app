@@ -1,9 +1,11 @@
 <template>
   <div id="app">
-    <h1>HeavyDoor</h1>
     <div id="nav">
-     <!-- <router-link :to="{ name: 'home' }">Vue</router-link> |
-     <router-link :to="{ name: 'messages' }">Django Rest</router-link> -->
+     <router-link :to="{ name: 'components' }">components</router-link> |
+     <router-link :to="{ name: 'landing' }">Landing</router-link> |
+     <router-link :to="{ name: 'login' }">login</router-link> |
+     <router-link :to="{ name: 'register' }">register</router-link> |
+     <router-link :to="{ name: 'profile' }">profile</router-link> |
     </div>
     <router-view/>
   </div>
