@@ -37,6 +37,7 @@ ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(' ')
 
 INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
+    'corsheaders',
     'booking.apps.BookingConfig',
     'clear_cache',
     'django.contrib.admin',
@@ -51,6 +52,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -144,10 +146,9 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'dist', 'static')
 STATICFILES_DIRS = []
 
-##########
-# STATIC #
-##########
-
+"""
+STATIC
+"""
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Insert Whitenoise Middleware at top but below Security Middleware
@@ -164,3 +165,33 @@ LOGIN_REDIRECT_URL = '/booking'
 
 # Logs emails sent to the console
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+""" 
+CORS
+"""
+CORS_ALLOWED_ORIGINS = env('CORS_ALLOWED_ORIGINS').split(' ')
+
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
+
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
+
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+# SESSION_EXPIRE_AT_BROWSER_CLOSE = True

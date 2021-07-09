@@ -77,6 +77,15 @@ export default new Router({
         default: BookingForm,
         footer: AppFooter
       }
+    },
+    {
+      path: "/submit",
+      name: "submit",
+      components: {
+        header: AppHeader,
+        default: BookingForm,
+        footer: AppFooter
+      }
     }
   ],
   scrollBehavior: to => {

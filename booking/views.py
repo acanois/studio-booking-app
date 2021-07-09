@@ -12,6 +12,10 @@ from .models import StudioBooking
 
 booking_home = never_cache(TemplateView.as_view(template_name='index.html'))
 
+def submit_booking_data(res):
+    print("booking data submitted")
+    return HttpResponse('Data reached server successfully')
+
 # def index(request):
 #     return render(request, 'booking_home.html')
 

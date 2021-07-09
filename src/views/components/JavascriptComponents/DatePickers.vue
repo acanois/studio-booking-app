@@ -28,8 +28,8 @@ export default {
   data() {
     return {
       dates: {
-        simple: "2018-07-17",
-        range: "2018-07-17 to 2018-07-19"
+        simple: "2021-07-17",
+        range: "2021-07-17 to 2021-07-19"
       }
     };
   }
