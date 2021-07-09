@@ -23,7 +23,7 @@
                 <date-pickers></date-pickers>
             </div>
             </div>
-
+ 
             <div class="btn-wrapper">
                 <base-button  v-on:click="submitForm"  
                                 tag="a"
@@ -47,14 +47,15 @@ export default {
     data() {
         return {
             form: {
-                firstName: '',
-                lastName: '',
-                bandName: '',
-                studio: '',
-                startDate: '',
-                engineer: '',
-                costPerHour: '',
-                estTotalCost: '',
+                firstName: 'david',
+                lastName: 'richter',
+                bandName: 'the hecking beatles',
+                studio: 'different fur',
+                startDate: '2021-07-09',
+                endDate: '2021-07-12',
+                engineer: 'Randall Dunn',
+                costPerHour: '1000',
+                estTotalCost: '10000',
             }
         }
     },

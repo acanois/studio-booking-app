@@ -8,8 +8,11 @@ from django.utils import timezone
 """
     
 class StudioBooking(models.Model):
-    start_date = models.DateTimeField('start date', default=timezone.now)
-    end_date = models.DateTimeField('end date', default=timezone.now)
+    first_name = models.CharField(max_length=50, default='None')
+    last_name = models.CharField(max_length=50, default='None')
+    band_name = models.CharField(max_length=100, default='None')
+    start_date = models.CharField(max_length=20, default='None')
+    end_date = models.CharField(max_length=20, default='None')
     engineer = models.CharField(max_length=40)
     studio = models.CharField(max_length=20)
     cost_per_hour = models.FloatField()

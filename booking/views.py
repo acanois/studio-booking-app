@@ -1,3 +1,5 @@
+import json
+
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .forms import InputUserForm
@@ -12,19 +14,19 @@ from .models import StudioBooking
 
 booking_home = never_cache(TemplateView.as_view(template_name='index.html'))
 
-def submit_booking_data(res):
-    print("booking data submitted")
-    return HttpResponse('Data reached server successfully')
-
-# def index(request):
-#     return render(request, 'booking_home.html')
-
-# class UserListView(LoginRequiredMixin, generic.ListView):
-#     model = User
-#     user_context_name = 'user_list'
-#     queryset = User.objects.all()
-#     template_name = 'booking_home.html'
-
-# class UserDetailView(LoginRequiredMixin, generic.DetailView):
-#     model = User
-#     template_name = 'user_detail.html'
+def submit_booking_data(req):
+    if req.method == 'POST':
+        body = json.loads(req.body.decode('utf-8'))
+        new_booking = StudioBooking(
+            first_name=body['firstName'],
+            last_name=body['lastName'],
+            band_name=body['bandName'],
+            start_date=body['startDate'],
+            end_date=body['endDate'],
+            engineer=body['engineer'],
+            studio=body['studio'],
+            cost_per_hour=body['costPerHour'],
+            est_total_cost=body['estTotalCost']
+        )
+        new_booking.save()
+    return HttpResponse(req)
