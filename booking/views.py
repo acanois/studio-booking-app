@@ -17,6 +17,7 @@ booking_home = never_cache(TemplateView.as_view(template_name='index.html'))
 def submit_booking_data(req):
     if req.method == 'POST':
         body = json.loads(req.body.decode('utf-8'))
+        print(body)
         new_booking = StudioBooking(
             first_name=body['firstName'],
             last_name=body['lastName'],

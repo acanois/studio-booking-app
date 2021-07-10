@@ -10,11 +10,12 @@
             <!-- INPUT FIELDS -->
             <div class="row">
                 <div class="col-lg-4 col-sm-6">
-                    <base-input placeholder="First Name"></base-input>
-                    <base-input placeholder="Artist/Band Name"></base-input>
+                    <base-input v-model="form['firstName']" placeholder="First Name"></base-input>
+                    {{firstName}}
+                    <base-input v-model="form['lastName']" placeholder="Last Name"></base-input>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <base-input placeholder="Last Name"></base-input>
+                    <base-input v-model="form['bandName']" placeholder="Artist/Band Name"></base-input>
                 </div>
             </div>
 
@@ -45,23 +46,35 @@ import DatePickers from './components/JavascriptComponents/DatePickers.vue'
 export default {
     name: 'bookingForm',
     data() {
+        // 99% Sure this is the wrong way to do this, but it works for now
         return {
+            firstName: '',
+            lastName: '',
+            bandName: '',
+            studio: '',
+            startDate: '',
+            endDate: '',
+            engineer: '',
+            costPerHour: '',
+            estTotalCost: '',
+
             form: {
-                firstName: 'david',
-                lastName: 'richter',
-                bandName: 'the hecking beatles',
-                studio: 'different fur',
-                startDate: '2021-07-09',
-                endDate: '2021-07-12',
-                engineer: 'Randall Dunn',
-                costPerHour: '1000',
-                estTotalCost: '10000',
+                firstName: this.firstName,
+                lastName: this.lastName,
+                bandName: this.bandName,
+                studio: this.studio,
+                startDate: this.startDate,
+                endDate: this.endDate,
+                engineer: this.engineer,
+                costPerHour: this.costPerHour,
+                estTotalCost: this.estTotalCost,
             }
         }
     },
     methods: {
         submitForm() {
-            console.log('submitForm called')
+            // console.log('submitForm called')
+            // console.log(this.form)
             axios.post('http://0.0.0.0:8000/booking/submit-booking-data', this.form)
                 .then(res => {
                     console.log(res)
