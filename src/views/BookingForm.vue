@@ -11,11 +11,16 @@
             <div class="row">
                 <div class="col-lg-4 col-sm-6">
                     <base-input v-model="form['firstName']" placeholder="First Name"></base-input>
-                    {{firstName}}
                     <base-input v-model="form['lastName']" placeholder="Last Name"></base-input>
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <base-input v-model="form['bandName']" placeholder="Artist/Band Name"></base-input>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <base-input v-model="form['studio']" placeholder="Studio"></base-input>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <base-input v-model="form['engineer']" placeholder="engineer"></base-input>
                 </div>
             </div>
 
@@ -53,21 +58,19 @@ export default {
             bandName: '',
             studio: '',
             startDate: '',
-            endDate: '',
+            endDate: '2021-07-15',
             engineer: '',
-            costPerHour: '',
-            estTotalCost: '',
 
             form: {
                 firstName: this.firstName,
                 lastName: this.lastName,
                 bandName: this.bandName,
                 studio: this.studio,
-                startDate: this.startDate,
-                endDate: this.endDate,
+                startDate: '2021-07-11',
+                endDate: '2021-07-15',
                 engineer: this.engineer,
-                costPerHour: this.costPerHour,
-                estTotalCost: this.estTotalCost,
+                costPerHour: 1000,
+                estTotalCost: 10000,
             }
         }
     },
