@@ -20,25 +20,41 @@
                     <base-input v-model="form['studio']" placeholder="Studio"></base-input>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <base-input v-model="form['engineer']" placeholder="engineer"></base-input>
+                    <base-input v-model="form['engineer']" placeholder="Engineer"></base-input>
                 </div>
             </div>
 
             <!-- DATEPICKER -->
-            <div class="datepicker-wrapper">
-                <date-pickers></date-pickers>
+            <div class="row">
+                <div class="col-md-4 mt-4 mt-md-0">
+                <small class="d-block text-uppercase font-weight-bold mb-3">Pick Some Dates</small>
+                <div class="input-daterange datepicker row align-items-center">
+                    <div class="col">
+                        <base-input addon-left-icon="ni ni-calendar-grid-58">
+                        <flat-picker slot-scope="{focus, blur}"
+                                        @on-open="focus"
+                                        @on-close="blur"
+                                        @on-change="onDateChange"
+                                        :config="{allowInput: true, mode: 'range',}"
+                                        class="form-control datepicker"
+                                        v-model="dateRange">
+                        </flat-picker>
+                        </base-input>
+                    </div>
+                </div>
+                </div>
             </div>
-            </div>
- 
-            <div class="btn-wrapper">
-                <base-button  v-on:click="submitForm"  
-                                tag="a"
-                                href="#/submit"
-                                class="mb-3 mb-sm-0"
-                                type="info">
-                    Submit
-                </base-button>
-            </div>
+        </div>
+
+        <div class="btn-wrapper">
+            <base-button  v-on:click="submitForm"  
+                            tag="a"
+                            href="#/submit"
+                            class="mb-3 mb-sm-0"
+                            type="info">
+                Submit
+            </base-button>
+        </div>
     </section>
 </template>
 
@@ -47,27 +63,21 @@
 import axios from 'axios'
 
 import DatePickers from './components/JavascriptComponents/DatePickers.vue'
+import flatPicker from "vue-flatpickr-component";
+import "flatpickr/dist/flatpickr.css";
 
 export default {
     name: 'bookingForm',
     data() {
-        // 99% Sure this is the wrong way to do this, but it works for now
         return {
-            firstName: '',
-            lastName: '',
-            bandName: '',
-            studio: '',
-            startDate: '',
-            endDate: '2021-07-15',
-            engineer: '',
-
+            dateRange: '',
             form: {
                 firstName: this.firstName,
                 lastName: this.lastName,
                 bandName: this.bandName,
                 studio: this.studio,
-                startDate: '2021-07-11',
-                endDate: '2021-07-15',
+                startDate: '',
+                endDate: '',
                 engineer: this.engineer,
                 costPerHour: 1000,
                 estTotalCost: 10000,
@@ -76,8 +86,6 @@ export default {
     },
     methods: {
         submitForm() {
-            // console.log('submitForm called')
-            // console.log(this.form)
             axios.post('http://0.0.0.0:8000/booking/submit-booking-data', this.form)
                 .then(res => {
                     console.log(res)
@@ -85,10 +93,17 @@ export default {
                 .catch(err => {
                     console.error(err)
                 })
+        },
+        onDateChange() {
+            const rangeToBook = this.dateRange.split('to')
+            if (rangeToBook.length === 2)
+                this.form.startDate = rangeToBook[0].trim()
+                this.form.endDate = rangeToBook[1].trim()
         }
     },
     components: {
-        DatePickers,
+        // DatePickers,
+        flatPicker,
     },
 }
 
