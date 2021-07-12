@@ -10,5 +10,6 @@ from . import views
 """
 urlpatterns = [
     path('', views.booking_home, name='index'),
-    path('submit-booking-data', csrf_exempt(views.submit_booking_data), name='index'),
+    path('submit-booking-data', csrf_exempt(views.submit_booking_data), name='submit_booking_data'),
+    path('get-one-booking', csrf_exempt(views.get_one_booking), name='get_one_booking')
 ]

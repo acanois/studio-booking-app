@@ -9,6 +9,7 @@ import Register from "./views/Register.vue"
 import Profile from "./views/Profile.vue"
 import Home from "./views/Home.vue"
 import BookingForm from "./views/BookingForm.vue"
+import BookingConfirm from "./views/BookingConfirm.vue"
 
 Vue.use(Router)
 
@@ -83,7 +84,7 @@ export default new Router({
       name: "submit",
       components: {
         header: AppHeader,
-        default: BookingForm,
+        default: BookingConfirm,
         footer: AppFooter
       }
     }

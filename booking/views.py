@@ -17,7 +17,6 @@ booking_home = never_cache(TemplateView.as_view(template_name='index.html'))
 def submit_booking_data(req):
     if req.method == 'POST':
         body = json.loads(req.body.decode('utf-8'))
-        print(body)
         new_booking = StudioBooking(
             first_name=body['firstName'],
             last_name=body['lastName'],
@@ -30,4 +29,17 @@ def submit_booking_data(req):
             est_total_cost=body['estTotalCost']
         )
         new_booking.save()
-    return HttpResponse(req)
+
+def get_one_booking(req):
+    print(req.body)
+    booking = StudioBooking.objects.get(pk=8)
+    
+    return HttpResponse(json.dumps({
+        'first_name': booking.first_name,
+        'last_name': booking.last_name,
+        'band_name': booking.band_name,
+        'start_date': booking.start_date,
+        'end_date': booking.end_date,
+        'engineer': booking.engineer,
+        'studio': booking.studio,
+    }))
