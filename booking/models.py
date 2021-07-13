@@ -8,6 +8,7 @@ from django.utils import timezone
 """
     
 class StudioBooking(models.Model):
+    booking_id = models.BigIntegerField(default=0)
     first_name = models.CharField(max_length=50, default='None')
     last_name = models.CharField(max_length=50, default='None')
     band_name = models.CharField(max_length=100, default='None')

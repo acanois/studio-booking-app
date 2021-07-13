@@ -78,6 +78,7 @@ export default {
         this.engineer = res.data.engineer
         this.studio = res.data.studio
       })
+      .then(console.log('NEXT'))
       .catch(err => console.log(err))
   }
 }

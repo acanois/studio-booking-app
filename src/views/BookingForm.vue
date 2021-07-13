@@ -100,6 +100,7 @@ export default {
         engineer: this.engineer,
         costPerHour: 1000,
         estTotalCost: 10000,
+        bookingId: Math.floor(Math.random() * (2 ** 32)),
       },
     };
   },

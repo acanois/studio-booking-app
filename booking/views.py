@@ -1,4 +1,5 @@
 import json
+from django import http
 
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
@@ -26,9 +27,12 @@ def submit_booking_data(req):
             engineer=body['engineer'],
             studio=body['studio'],
             cost_per_hour=body['costPerHour'],
-            est_total_cost=body['estTotalCost']
+            est_total_cost=body['estTotalCost'],
+            booking_id=body['bookingId'],
         )
         new_booking.save()
+
+        return HttpResponse(200)
 
 def get_one_booking(req):
     print(req.body)
