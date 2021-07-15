@@ -51,7 +51,7 @@
                   slot-scope="{ focus, blur }"
                   @on-open="focus"
                   @on-close="blur"
-                  @on-change="onDateChange"
+                  @on-change="onDateChange()"
                   :config="{ allowInput: true, mode: 'range' }"
                   class="form-control datepicker"
                   v-model="dateRange"
@@ -68,7 +68,7 @@
       <base-button
         v-on:click="submitForm"
         tag="a"
-        href="#/submit"
+        :href="`#/confirmation/${getBookingId()}`"
         class="mb-3 mb-sm-0"
         type="info"
       >
@@ -90,6 +90,7 @@ export default {
   data() {
     return {
       dateRange: "",
+      bookingId: 0, 
       form: {
         firstName: this.firstName,
         lastName: this.lastName,
@@ -116,11 +117,15 @@ export default {
         });
     },
     onDateChange() {
-      const rangeToBook = this.dateRange.split("to");
-      if (rangeToBook.length === 2) 
+      if (rangeToBook.length === 2) {
+        const rangeToBook = this.dateRange.split("to"); 
         this.form.startDate = rangeToBook[0].trim();
         this.form.endDate = rangeToBook[1].trim();
+      }
     },
+    getBookingId() {
+      return this.form.bookingId
+    }
   },
   components: {
     flatPicker,

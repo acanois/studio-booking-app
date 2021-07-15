@@ -80,8 +80,8 @@ export default new Router({
       }
     },
     {
-      path: "/submit",
-      name: "submit",
+      path: "/confirmation/:booking_id",
+      name: "confirmation",
       components: {
         header: AppHeader,
         default: BookingConfirm,

@@ -58,17 +58,22 @@ export default {
   name: 'bookingConfirmation',
   data() {
     return {
-      pk: 5,
       firstName: '',
       lastName: '',
       bandName: '',
       startDate: '',
       endDate: '',
+      studio: '',
+      engineer: '',
     }
   },
+  methods: {
+
+  },
   mounted() {
+    console.log(this.$route.path.split('/')[2])
     axios
-      .get('http://localhost:8000/booking/get-one-booking', this.confirmationData)
+      .get(`http://localhost:8000/booking/get-one-booking/${this.$route.path.split('/')[2]}`)
       .then(res => {
         this.firstName = res.data.first_name
         this.lastName = res.data.last_name
@@ -78,7 +83,6 @@ export default {
         this.engineer = res.data.engineer
         this.studio = res.data.studio
       })
-      .then(console.log('NEXT'))
       .catch(err => console.log(err))
   }
 }

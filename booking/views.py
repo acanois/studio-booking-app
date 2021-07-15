@@ -13,6 +13,7 @@ from django.views.generic import TemplateView
 
 from .models import StudioBooking
 
+current_booking_id = 0
 booking_home = never_cache(TemplateView.as_view(template_name='index.html'))
 
 def submit_booking_data(req):
@@ -32,11 +33,12 @@ def submit_booking_data(req):
         )
         new_booking.save()
 
-        return HttpResponse(200)
+        return HttpResponse(200) 
 
-def get_one_booking(req):
-    print(req.body)
-    booking = StudioBooking.objects.get(pk=8)
+def get_one_booking(req, booking_id):
+    print(req)
+    print(f"*******BOOKING ID: {booking_id}**********")
+    booking = StudioBooking.objects.get(booking_id=booking_id)
     
     return HttpResponse(json.dumps({
         'first_name': booking.first_name,
