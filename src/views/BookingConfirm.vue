@@ -1,7 +1,9 @@
 <template>
   <section class="section pb-0 section-components">
     <div class="container mb-5">
-      <h3 class="h4 text-success font-weight-bold mb-4">Booking Confirmation</h3>
+      <h3 class="h4 text-success font-weight-bold mb-4">Success!</h3>
+      <h5 class="h5 text-success font-weight-bold mb-4">Your Booking is Confirmed For: </h5>
+      <p class="font-weight-bold">{{ startDate }} to {{ endDate }}</p>
 
       <div class="row" style="text-align: left;">
         <div class="col-lg-4 col-sm-6">
@@ -23,21 +25,11 @@
       <div class="row" style="text-align: left;">
         <div class="col-lg-4 col-sm-6">
           <div class="mb-5">
-            <small class="text-uppercase font-weight-bold">Dates</small>
-            <br>
-            {{ startDate }} to {{ endDate }}
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <div class="mb-5">
             <small class="text-uppercase font-weight-bold">Engineer</small>
             <br>
             {{ engineer }}
           </div>
         </div>
-      </div>
-
-      <div class="row" style="text-align: left;">
         <div class="col-lg-4 col-sm-6">
           <div class="mb-5">
             <small class="text-uppercase font-weight-bold">Studio</small>
@@ -46,7 +38,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </section>
 </template>

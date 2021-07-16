@@ -117,11 +117,10 @@ export default {
         });
     },
     onDateChange() {
-      if (rangeToBook.length === 2) {
-        const rangeToBook = this.dateRange.split("to"); 
-        this.form.startDate = rangeToBook[0].trim();
-        this.form.endDate = rangeToBook[1].trim();
-      }
+      const rangeToBook = this.dateRange.split("to");
+      // if (rangeToBook.length === 2) 
+        this.form.startDate = rangeToBook[0].trim()
+        this.form.endDate = rangeToBook[1].trim()
     },
     getBookingId() {
       return this.form.bookingId
